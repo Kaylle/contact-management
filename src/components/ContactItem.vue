@@ -5,7 +5,7 @@
       {{ userData.name }}
     </td>
     <td class="px-6 py-4">
-      {{ userData.phone }}
+      +7 {{ userData.phone }}
     </td>
     <td class="px-6 py-4">
       {{ userData.email }}

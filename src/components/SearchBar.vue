@@ -11,6 +11,9 @@
     <button @click="submitForm" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
       Поиск
     </button>
+    <button @click="clearForm" class="text-blue-700 hover:bg-blue-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+      Очистить
+    </button>
   </div>
 </template>
 
@@ -20,10 +23,15 @@ import {ref,defineEmits} from 'vue'
 const search = ref('')
 
 const emit = defineEmits([
-    'filter'
+    'filter',
+    'clear-filter'
 ])
 
 const submitForm = () => {
   emit('filter', search.value)
+}
+
+const clearForm = () => {
+  emit('clear-filter')
 }
 </script>

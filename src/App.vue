@@ -14,6 +14,7 @@
     <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
       <SearchBar
         @filter="filterData"
+        @clear-filter="onUpdate"
       />
       <ContactList
           :table-data="tableData"
@@ -32,10 +33,10 @@ import ContactForm from "@/components/ContactForm.vue";
 import SearchBar from "@/components/SearchBar.vue";
 
 const formData = ref({
-  id: null,
+  id: 0,
   name: '',
   phone: null,
-  email: '',
+  email: ''
 } as UserType )
 
 const isEdit = ref(false)
@@ -48,12 +49,13 @@ const onEdit = (data: UserType) => {
 }
 
 const filterData = (val:string) => {
-  console.log(val)
+  const search = val.toLowerCase()
+  tableData.value = tableData.value.filter(x => x.name.toLowerCase().includes(search))
 }
 
 const onUpdate = () => {
   formData.value = {
-    id: null,
+    id: 0,
     name: '',
     phone: null,
     email: '',
