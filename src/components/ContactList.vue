@@ -31,7 +31,7 @@ import ContactItem from "@/components/ContactItem.vue";
 import {defineEmits, defineProps, PropType} from 'vue'
 import {UserType} from "@/api";
 
-const props = defineProps({
+defineProps({
   tableData: Array as PropType<UserType[]>
 })
 
