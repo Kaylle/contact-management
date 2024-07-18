@@ -14,15 +14,15 @@ const testData = [
     },
     {
         id: 2,
-        name: 'Куркина Екатерина',
-        phone: 9965901445,
-        email: 'kaylle@yandex.ru'
+        name: 'Иван Иванов',
+        phone: 9923423444,
+        email: 'test@yandex.ru'
     },
     {
         id: 3,
-        name: 'Куркина Екатерина',
-        phone: 9965901445,
-        email: 'kaylle@yandex.ru'
+        name: 'Федор Болотин',
+        phone: 9923455678,
+        email: 'test@gmail.com'
     }
     ] as UserType[]
 
