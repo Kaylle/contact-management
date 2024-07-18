@@ -28,7 +28,9 @@
       </label>
       <input
           v-model="data.phone"
-          type="text"
+          type="number"
+          maxlength="10"
+          minlength="10"
           id="phone"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           required
@@ -82,18 +84,23 @@ const data = computed<UserType>({
 })
 
 const submitForm = () => {
-  // if (typeof data.value.phone!=='number')
-  //   return false
-  if (!data.value.email.match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  ))
+  try {
+    if (data.value.phone.toString().length!==10) {
+      return false
+    }
+    if (!data.value.email.match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    ))
     return false
-  if (props.isEdit) {
-    editContact(data.value)
-  } else {
-    createContact(data.value)
+    if (props.isEdit) {
+      editContact(data.value)
+    } else {
+      createContact(data.value)
+    }
+    emit('on-update')
+  } catch (e) {
+    console.log(e)
   }
-  emit('on-update')
 }
 
 const resetForm = () => {
